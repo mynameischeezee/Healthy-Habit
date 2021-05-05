@@ -1,0 +1,20 @@
+﻿<Window x:Class="HealthyHabit.View.Views.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View.Views"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        MinWidth="800"
+        MinHeight="600"
+        Title="Healthy Habbit"  Width="1000" Height="400" ui:WindowHelper.UseModernWindowStyle="True" WindowStartupLocation="CenterOwner" WindowStyle="None">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ui:ProgressRing IsActive="True" x:Name="LoadingRing" Width="50" Height="50"></ui:ProgressRing>
+            <Label Content="Завантаження... Будь Ласка зачекайте" Margin="20" FontFamily="{DynamicResource MahApps.Fonts.Family.Header}" FontSize="15"></Label>
+        </StackPanel>
+        
+    </Grid>
+</Window>

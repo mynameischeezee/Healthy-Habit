@@ -6,4 +6,29 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
+    <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include=".misc\docker-compose.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HealthyHabit.ViewModel\HealthyHabit.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Configuration\appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

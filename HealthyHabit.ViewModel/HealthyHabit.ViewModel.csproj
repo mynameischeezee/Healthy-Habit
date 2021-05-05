@@ -4,4 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HealthyHabit.BL.Abstract\HealthyHabit.BL.Abstract.csproj" />
+    <ProjectReference Include="..\HealthyHabit.BL.Implementation\HealthyHabit.BL.Implementation.csproj" />
+    <ProjectReference Include="..\HealthyHabit.DAL.Abstract\HealthyHabit.DAL.Abstract.csproj" />
+    <ProjectReference Include="..\HealthyHabit.DAL.Implementation\HealthyHabit.DAL.Implementation.csproj" />
+    <ProjectReference Include="..\HealthyHabit.Models\HealthyHabit.Models.csproj" />
+  </ItemGroup>
+
 </Project>
