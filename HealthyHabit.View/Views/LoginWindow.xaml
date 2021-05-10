@@ -1,17 +1,18 @@
-﻿<Window
+﻿<Window x:Class="HealthyHabit.View.Views.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthyHabit.View"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="HealthyHabit.View.LoginWindow"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         MinWidth="800"
         MinHeight="600"
         Title="Healthy Habbit"  Width="1280" Height="720"
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
+        <Label Content="{Binding CompanyLabel}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
             <TextBox x:Name="txtBox_Login" mah:TextBoxHelper.Watermark="" Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15"/>
             <PasswordBox x:Name="pswdBox_Login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15"></PasswordBox>

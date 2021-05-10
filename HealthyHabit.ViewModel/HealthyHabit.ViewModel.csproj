@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Notifications.Wpf.Core" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HealthyHabit.BL.Abstract\HealthyHabit.BL.Abstract.csproj" />
     <ProjectReference Include="..\HealthyHabit.BL.Implementation\HealthyHabit.BL.Implementation.csproj" />
     <ProjectReference Include="..\HealthyHabit.DAL.Abstract\HealthyHabit.DAL.Abstract.csproj" />

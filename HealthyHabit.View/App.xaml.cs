@@ -1,6 +1,8 @@
 ﻿using HealthyHabit.DAL.Implementation;
 using HealthyHabit.View.Views;
 using HealthyHabit.ViewModel;
+using HealthyHabit.BL.Implementation;
+using HealthyHabit.BL.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using HealthyHabit.Models;
 
 namespace HealthyHabit.View
 {
@@ -26,9 +29,9 @@ namespace HealthyHabit.View
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            ServiceProvider = Configure()
-                            .BuildServiceProvider();
+            ServiceProvider = Configure().BuildServiceProvider();
             ServiceProvider.GetRequiredService<LoginWindow>().Show();
+
         }
         private IServiceCollection Configure()
         {
@@ -41,11 +44,23 @@ namespace HealthyHabit.View
                    (optionsBuilder => optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DockerMsSqlDB")))
                    .AddSingleton<LoginWindow>()
                    .AddSingleton<MainMenu>()
-                   .AddSingleton<MainViewModel>();
+                   .AddSingleton<SettingsWindow>()
+                   .AddSingleton<HabitWindow>()
+                   .AddSingleton<ChartsWindow>()
+                   .AddSingleton<LoginViewModel>()
+                   .AddSingleton<MainMenuViewModel>()
+                   .AddSingleton<SettingsViewModel>()
+                   .AddSingleton<HabitViewModel>()
+                   .AddSingleton<ChartViewModel>()
+                   .AddSingleton<IAccountHolder<User>,AccountHolder>()
+                   .AddTransient<IAuthenticationService<SystemContextSQL>, AuthenticationService>()
+                   .AddTransient<IHabitService, HabitService>()
+                   .AddTransient<IUserService, UserService>()
+                   .AddTransient<IChartService, ChartService>();        
         }
         protected override async void OnExit(ExitEventArgs e)
         {
-            ServiceProvider.GetRequiredService<SystemContextSQL>();
+            await ServiceProvider.GetRequiredService<SystemContextSQL>().DisposeAsync();
             base.OnExit(e);
         }
     }

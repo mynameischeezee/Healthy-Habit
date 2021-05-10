@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyHabit.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,7 +18,7 @@ namespace HealthyHabit.View.Views
     /// </summary>
     public partial class MainMenu : Window
     {
-        public MainMenu()
+        public MainMenu(MainMenuViewModel datacontext)
         {
             InitializeComponent();
         }

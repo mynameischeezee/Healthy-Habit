@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyHabit.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,13 +14,14 @@ using System.Windows.Shapes;
 namespace HealthyHabit.View.Views
 {
     /// <summary>
-    /// Interaction logic for LoadingWindow.xaml
+    /// Interaction logic for SettingsWindow.xaml
     /// </summary>
-    public partial class LoadingWindow : Window
+    public partial class SettingsWindow : Window
     {
-        public LoadingWindow()
+        public SettingsWindow(SettingsViewModel datacontext)
         {
             InitializeComponent();
+            this.DataContext = datacontext;
         }
     }
 }
