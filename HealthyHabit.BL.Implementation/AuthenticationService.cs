@@ -4,29 +4,48 @@ using System.Text;
 using HealthyHabit.Models;
 using HealthyHabit.DAL.Implementation;
 using HealthyHabit.BL.Abstract;
+using System.Linq;
 
 namespace HealthyHabit.BL.Implementation
 {
     public class AuthenticationService : IAuthenticationService<SystemContextSQL>
     {
-        public void Change(SystemContextSQL datacontext, string name, string username, string mail, string password)
+        private ISaltService salt { get; set; }
+        private IHashService hash { get; set; }
+        private IUserService<SystemContextSQL, User> UserService { get; set; }
+        private IAccountHolder<User> AccountHolder { get; set; }
+        public AuthenticationService(ISaltService saltService, IHashService hashService, IUserService<SystemContextSQL, User> userService, IAccountHolder<User> accountHolder)
         {
-            throw new NotImplementedException();
-        }
+            salt = saltService;
+            hash = hashService;
+            UserService = userService;
+            AccountHolder = accountHolder;
 
+        }
         public void Login(SystemContextSQL datacontext, string username, string password)
         {
-            throw new NotImplementedException();
+            if (datacontext.User.Any(user => user.UserName == username))
+            {
+                User tmpUser = (User)datacontext.User.Where(user => user.UserName == username);
+                if (hash.Hash(password) == hash.DeHash(tmpUser.PasswordHash))
+                {
+                    AccountHolder.SetUser(tmpUser);
+                }
+                else
+                {
+                    throw new Exception("Wrong username or password");
+                }
+            }
+            else
+            {
+                throw new Exception("User not found");
+            }
         }
 
         public void Register(SystemContextSQL datacontext, string name, string username, string mail, string password)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(SystemContextSQL datacontext, string username)
-        {
-            throw new NotImplementedException();
+            string saltstr = salt.Generate();
+            UserService.Add(datacontext, name, username, mail, hash.Hash(password + saltstr), saltstr);
         }
     }
 }

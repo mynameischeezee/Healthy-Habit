@@ -17,6 +17,14 @@ namespace HealthyHabit.Models
         {
 
         }
+        public User(string name, string username, string mail, string passwordhash, string salt)
+        {
+            this.Name = name;
+            this.UserName = username;
+            this.Mail = mail;
+            this.PasswordHash = passwordhash;
+            this.Salt = salt;
+        }
 
     }
 }

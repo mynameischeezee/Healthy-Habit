@@ -4,10 +4,8 @@ using System.Text;
 
 namespace HealthyHabit.BL.Abstract
 {
-    public interface IAccountHolder<User>
-    where User : class
+    public interface ISaltService
     {
-        void SetUser(User user);
-        User GetUser();
+        string Generate();
     }
 }

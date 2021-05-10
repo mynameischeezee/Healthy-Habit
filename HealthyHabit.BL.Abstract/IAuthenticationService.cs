@@ -9,7 +9,5 @@ namespace HealthyHabit.BL.Abstract
     {
         void Login(Datacontext datacontext, string username, string password);
         void Register(Datacontext datacontext, string name, string username, string mail, string password);
-        void Change(Datacontext datacontext, string name, string username, string mail, string password);
-        void Remove(Datacontext datacontext, string username);
     }
 }

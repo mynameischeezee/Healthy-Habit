@@ -12,16 +12,28 @@
         Title="Healthy Habbit"  Width="1280" Height="720"
         ui:WindowHelper.UseModernWindowStyle="True">
     <Grid>
-        <Label Content="{Binding CompanyLabel}" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
-            <TextBox x:Name="txtBox_Login" mah:TextBoxHelper.Watermark="" Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15"/>
-            <PasswordBox x:Name="pswdBox_Login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15"></PasswordBox>
-            <Button x:Name="btn_login" Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25"></Button>
+        <Label Content="Healthy habit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100"></Label>
+        <StackPanel x:Name="LoginStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <Label Content="Увійти до системи" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15"/>
+            <PasswordBox Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15"></PasswordBox>
+            <Button Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25"></Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Досі не маєте аккаунту?"></Label>
-                <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center"  ></Button>
+                <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
             </StackPanel>
         </StackPanel>
-
+        <StackPanel x:Name="RegisterStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="Hidden">
+            <Label Content="Регестрація" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Як до вас звертатися ?" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,5"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Ім'я для входу" ui:ControlHelper.Header="Логін" Margin="0,0,0,5"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Пошта" ui:ControlHelper.Header="Адреса електронної пошти" Margin="0,0,0,5"/>
+            <PasswordBox Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,25"></PasswordBox>
+            <Button Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25"></Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Вже маєте акаунт?"></Label>
+                <Button x:Name="btn_switchtologin" Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

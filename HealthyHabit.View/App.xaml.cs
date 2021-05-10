@@ -26,12 +26,10 @@ namespace HealthyHabit.View
     {
         public IConfiguration Configuration { get; private set; }
         private ServiceProvider ServiceProvider { get; set; }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             ServiceProvider = Configure().BuildServiceProvider();
             ServiceProvider.GetRequiredService<LoginWindow>().Show();
-
         }
         private IServiceCollection Configure()
         {
@@ -52,11 +50,12 @@ namespace HealthyHabit.View
                    .AddSingleton<SettingsViewModel>()
                    .AddSingleton<HabitViewModel>()
                    .AddSingleton<ChartViewModel>()
-                   .AddSingleton<IAccountHolder<User>,AccountHolder>()
+                   .AddSingleton<IAccountHolder<User>, AccountHolder>()
                    .AddTransient<IAuthenticationService<SystemContextSQL>, AuthenticationService>()
-                   .AddTransient<IHabitService, HabitService>()
-                   .AddTransient<IUserService, UserService>()
-                   .AddTransient<IChartService, ChartService>();        
+                   .AddTransient<IHabitService<SystemContextSQL, Habit>, HabitService>()
+                   .AddTransient<IUserService<SystemContextSQL, User>, UserService>()
+                   .AddTransient<IChartService, ChartService>()
+                   .AddTransient<IHashService, HashService>();
         }
         protected override async void OnExit(ExitEventArgs e)
         {

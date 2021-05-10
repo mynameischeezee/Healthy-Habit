@@ -4,10 +4,10 @@ using System.Text;
 
 namespace HealthyHabit.BL.Abstract
 {
-    public interface IAccountHolder<User>
-    where User : class
+    public interface IHashService
     {
-        void SetUser(User user);
-        User GetUser();
+        string Hash(string password);
+        string DeHash(string hash);
+
     }
 }

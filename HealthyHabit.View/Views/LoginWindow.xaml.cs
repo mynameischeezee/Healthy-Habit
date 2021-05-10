@@ -28,5 +28,19 @@ namespace HealthyHabit.View.Views
             InitializeComponent();
             this.DataContext = datacontext;
         }
+
+        private void Switch(object sender, RoutedEventArgs e)
+        {
+            if (RegisterStackPanel.Visibility == Visibility.Visible)
+            {
+                RegisterStackPanel.Visibility = Visibility.Hidden;
+                LoginStackPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                RegisterStackPanel.Visibility = Visibility.Visible;
+                LoginStackPanel.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
