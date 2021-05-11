@@ -12,7 +12,7 @@ namespace HealthyHabit.BL.Implementation
     {
         public void Add(SystemContextSQL datacontext, string name, string username, string mail, string passwordhash, string salt)
         {
-            if (IsExists(datacontext, username))
+            if (!IsExists(datacontext, username))
             {
                 datacontext.User.Add(new User(name, username, mail, passwordhash, salt));
                 datacontext.SaveChanges();

@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.View", "HealthyHabit.View\HealthyHabit.View.csproj", "{2A680F1F-2375-451F-A143-C118F6E120FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.View", "HealthyHabit.View\HealthyHabit.View.csproj", "{2A680F1F-2375-451F-A143-C118F6E120FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.DAL.Implementation", "HealthyHabit.DAL.Implementation\HealthyHabit.DAL.Implementation.csproj", "{193DCA5F-B29D-4008-BF20-DCAABB4828F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.DAL.Implementation", "HealthyHabit.DAL.Implementation\HealthyHabit.DAL.Implementation.csproj", "{193DCA5F-B29D-4008-BF20-DCAABB4828F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.DAL.Abstract", "HealthyHabit.DAL.Abstract\HealthyHabit.DAL.Abstract.csproj", "{15ACF7B3-638D-4FFC-A427-590F832A3D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.DAL.Abstract", "HealthyHabit.DAL.Abstract\HealthyHabit.DAL.Abstract.csproj", "{15ACF7B3-638D-4FFC-A427-590F832A3D0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.ViewModel", "HealthyHabit.ViewModel\HealthyHabit.ViewModel.csproj", "{64370721-2292-4BE1-B46C-1DDAFD71DA49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.ViewModel", "HealthyHabit.ViewModel\HealthyHabit.ViewModel.csproj", "{64370721-2292-4BE1-B46C-1DDAFD71DA49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.BL.Implementation", "HealthyHabit.BL.Implementation\HealthyHabit.BL.Implementation.csproj", "{92A62102-D37D-4B1A-906C-07627BF73159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.BL.Implementation", "HealthyHabit.BL.Implementation\HealthyHabit.BL.Implementation.csproj", "{92A62102-D37D-4B1A-906C-07627BF73159}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.BL.Abstract", "HealthyHabit.BL.Abstract\HealthyHabit.BL.Abstract.csproj", "{EA7DBA8B-837A-49C6-97F5-BBFCA7B4F157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.BL.Abstract", "HealthyHabit.BL.Abstract\HealthyHabit.BL.Abstract.csproj", "{EA7DBA8B-837A-49C6-97F5-BBFCA7B4F157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.Models", "HealthyHabit.Models\HealthyHabit.Models.csproj", "{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.Models", "HealthyHabit.Models\HealthyHabit.Models.csproj", "{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.Tests", "HealthyHabit.Tests\HealthyHabit.Tests.csproj", "{81E716A7-FE74-49B0-A6A1-56375B91D394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E716A7-FE74-49B0-A6A1-56375B91D394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E716A7-FE74-49B0-A6A1-56375B91D394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E716A7-FE74-49B0-A6A1-56375B91D394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E716A7-FE74-49B0-A6A1-56375B91D394}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

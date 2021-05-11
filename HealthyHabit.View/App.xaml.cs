@@ -55,7 +55,8 @@ namespace HealthyHabit.View
                    .AddTransient<IHabitService<SystemContextSQL, Habit>, HabitService>()
                    .AddTransient<IUserService<SystemContextSQL, User>, UserService>()
                    .AddTransient<IChartService, ChartService>()
-                   .AddTransient<IHashService, HashService>();
+                   .AddTransient<IHashService, HashService>()
+                   .AddTransient<ISaltService, SaltService>();
         }
         protected override async void OnExit(ExitEventArgs e)
         {

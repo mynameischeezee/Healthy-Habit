@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HealthyHabit.View"
         xmlns:ui="http://schemas.modernwpf.com/2019"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         MinWidth="800"
         MinHeight="600"
@@ -15,9 +14,9 @@
         <Label Content="Healthy habit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100"></Label>
         <StackPanel x:Name="LoginStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <Label Content="Увійти до системи" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15"/>
-            <PasswordBox Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15"></PasswordBox>
-            <Button Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25"></Button>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15" Text="{Binding Username}"/>
+            <PasswordBox x:Name="pswd_login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15" />
+            <Button Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pswd_login, Mode=OneWay}" IsDefault="True"></Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Досі не маєте аккаунту?"></Label>
                 <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
@@ -25,11 +24,11 @@
         </StackPanel>
         <StackPanel x:Name="RegisterStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="Hidden">
             <Label Content="Регестрація" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Як до вас звертатися ?" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,5"/>
-            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Ім'я для входу" ui:ControlHelper.Header="Логін" Margin="0,0,0,5"/>
-            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Пошта" ui:ControlHelper.Header="Адреса електронної пошти" Margin="0,0,0,5"/>
-            <PasswordBox Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,25"></PasswordBox>
-            <Button Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25"></Button>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Як до вас звертатися ?" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,5" Text="{Binding Name}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Ім'я для входу" ui:ControlHelper.Header="Логін" Margin="0,0,0,5" Text="{Binding Username}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Пошта" ui:ControlHelper.Header="Адреса електронної пошти" Margin="0,0,0,5" Text="{Binding Mail}"/>
+            <PasswordBox x:Name="pswd_register" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,25" ></PasswordBox>
+            <Button Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=pswd_register, Mode=OneWay}" IsDefault="True"></Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Вже маєте акаунт?"></Label>
                 <Button x:Name="btn_switchtologin" Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
