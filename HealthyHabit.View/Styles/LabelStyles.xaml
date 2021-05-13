@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HealthyHabit.View.Styles">
+    <Style x:Key="HeaderLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="#362934"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"></Setter>
+        <Setter Property="FontSize" Value="30"></Setter>
+    </Style>
+    <Style x:Key="SmallLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="#8f99a7"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI Light"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+    </Style>
+    <Style x:Key="SmallLabelBlack" TargetType="Label">
+        <Setter Property="Foreground" Value="#362934"></Setter>
+        <Setter Property="FontFamily" Value="Segoe UI Light"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+    </Style>
+</ResourceDictionary>

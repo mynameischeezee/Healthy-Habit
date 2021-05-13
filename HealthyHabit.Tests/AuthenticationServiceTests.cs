@@ -13,8 +13,6 @@ namespace HealthyHabit.Tests
 {
     public class AuthenticationServiceTests
     {
-        private IAuthenticationService<SystemContextSQL> AuthenticationService;
-
         [Fact]
         public void RegisterLoginTest()
         {

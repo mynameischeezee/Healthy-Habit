@@ -1,4 +1,5 @@
-﻿using HealthyHabit.ViewModel;
+﻿using HealthyHabit.BL.Abstract;
+using HealthyHabit.ViewModel;
 using Notifications.Wpf.Core;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,12 @@ namespace HealthyHabit.View.Views
     public partial class LoginWindow : Window
     {
         NotificationManager notificationManager = new NotificationManager();
-        public LoginWindow(LoginViewModel datacontext)
+        private MainMenu Menu;
+        public LoginWindow(LoginViewModel datacontext, MainMenu menu)
         {
             InitializeComponent();
             this.DataContext = datacontext;
+            this.Menu = menu;
         }
 
         private void Switch(object sender, RoutedEventArgs e)
@@ -40,6 +43,18 @@ namespace HealthyHabit.View.Views
             {
                 RegisterStackPanel.Visibility = Visibility.Visible;
                 LoginStackPanel.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is IWindowLocator vm)
+            {
+                vm.ChangeWindow += () =>
+                {
+                    Menu.Show();
+                    this.Close();
+                };
             }
         }
     }

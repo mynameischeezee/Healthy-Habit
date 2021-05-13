@@ -15,7 +15,7 @@ using Microsoft.VisualStudio.PlatformUI;
 
 namespace HealthyHabit.ViewModel
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, IWindowLocator
     {
         public SystemContextSQL SystemContext { get; private set; }
         public IAuthenticationService<SystemContextSQL> authenticationService { get; private set; }
@@ -23,6 +23,7 @@ namespace HealthyHabit.ViewModel
         {
             this.SystemContext = context;
             this.authenticationService = authenticationService;
+
         }
         private string _name;
         public string Name
@@ -59,6 +60,7 @@ namespace HealthyHabit.ViewModel
                 return;
             this.Password = passwordBox.Password;
             authenticationService.Login(SystemContext, Username, Password);
+            OpenMainMenuCommand.Execute("");
         }
         public ICommand RegisterCommand
         {
@@ -86,6 +88,21 @@ namespace HealthyHabit.ViewModel
             {
                 return false;
             }
+            return true;
+        }
+        public ICommand OpenMainMenuCommand
+        {
+            get { return new DelegateCommand<object>(_OpenMainMenuCommand, CanChange); }
+        }
+        private void _OpenMainMenuCommand(object param)
+        {
+            ChangeWindow?.Invoke();
+        }
+        public Action ChangeWindow { get; set; }
+
+
+        public bool CanChange(object context)
+        {
             return true;
         }
     }

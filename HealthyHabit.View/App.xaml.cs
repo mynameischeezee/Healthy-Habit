@@ -58,9 +58,9 @@ namespace HealthyHabit.View
                    .AddTransient<IHashService, HashService>()
                    .AddTransient<ISaltService, SaltService>();
         }
-        protected override async void OnExit(ExitEventArgs e)
+        protected override void OnExit(ExitEventArgs e)
         {
-            await ServiceProvider.GetRequiredService<SystemContextSQL>().DisposeAsync();
+            ServiceProvider.GetRequiredService<SystemContextSQL>().Dispose();
             base.OnExit(e);
         }
     }

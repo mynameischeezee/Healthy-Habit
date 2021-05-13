@@ -25,7 +25,7 @@ namespace HealthyHabit.BL.Implementation
 
         public void Change(SystemContextSQL datacontext, string name, string username, string mail, string password)
         {
-            User tmpUser = (User)datacontext.User.Where(user => user.UserName == username);
+            User tmpUser = datacontext.User.FirstOrDefault(user => user.UserName == username);
             tmpUser.Name = name;
             tmpUser.UserName = username;
             tmpUser.Mail = mail;

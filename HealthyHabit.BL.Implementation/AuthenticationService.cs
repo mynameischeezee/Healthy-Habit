@@ -27,8 +27,6 @@ namespace HealthyHabit.BL.Implementation
             {
                 
                 var tmpUser = datacontext.User.FirstOrDefault(user => user.UserName == username);
-                string a = password + tmpUser.Salt;
-                string b = hash.DeHash(tmpUser.PasswordHash);
                 if (hash.Hash(password + tmpUser.Salt).Equals(tmpUser.PasswordHash))
                 {
                     AccountHolder.SetUser(tmpUser);

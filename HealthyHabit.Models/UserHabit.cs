@@ -11,5 +11,14 @@ namespace HealthyHabit.Models
         public int? UserId { get; set; }
         public Habit Habit { get; set; }
         public int? HabitId { get; set; }
+        public UserHabit()
+        {
+
+        }
+        public UserHabit(User user, Habit habit)
+        {
+            this.User = user;
+            this.Habit = habit;
+        }
     }
 }

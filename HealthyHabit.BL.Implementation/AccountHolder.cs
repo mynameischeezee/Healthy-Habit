@@ -12,7 +12,6 @@ namespace HealthyHabit.BL.Implementation
         private User Account { get; set; }
         public AccountHolder()
         {
-
         }
         public void SetUser(User user)
         {

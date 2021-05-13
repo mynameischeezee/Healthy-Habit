@@ -21,6 +21,7 @@ namespace HealthyHabit.View.Views
         public MainMenu(MainMenuViewModel datacontext)
         {
             InitializeComponent();
+            this.DataContext = datacontext;
         }
     }
 }

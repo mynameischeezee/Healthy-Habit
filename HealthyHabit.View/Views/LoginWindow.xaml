@@ -9,14 +9,14 @@
         MinWidth="800"
         MinHeight="600"
         Title="Healthy Habbit"  Width="1280" Height="720"
-        ui:WindowHelper.UseModernWindowStyle="True">
+        ui:WindowHelper.UseModernWindowStyle="True" Loaded="Window_Loaded">
     <Grid>
-        <Label Content="Healthy habit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100"></Label>
+        <Label Style="{StaticResource HeaderLabel}" Content="Healthy habit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100"></Label>
         <StackPanel x:Name="LoginStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
             <Label Content="Увійти до системи" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
             <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15" Text="{Binding Username}"/>
             <PasswordBox x:Name="pswd_login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15" />
-            <Button Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pswd_login, Mode=OneWay}" IsDefault="True"></Button>
+            <Button Content="Увійти" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pswd_login, Mode=OneWay}" Style="{DynamicResource AccentButtonStyle}" IsDefault="True"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label Content="Досі не маєте аккаунту?"></Label>
                 <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>

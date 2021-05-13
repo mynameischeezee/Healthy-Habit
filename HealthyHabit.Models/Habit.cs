@@ -14,5 +14,19 @@ namespace HealthyHabit.Models
         public string Color { get; set; }
         public DateTime DateCreated { get; set; }
         public int PlantId { get; set; }
+        public Habit()
+        {
+
+        }
+        public Habit(string name, string desciption, int progress, bool iscompleted, string color, DateTime datecreated, int plantid)
+        {
+            this.Name = name;
+            this.Description = desciption;
+            this.Progress = progress;
+            this.IsCompleted = iscompleted;
+            this.Color = color;
+            this.DateCreated = datecreated;
+            this.PlantId = plantid;
+        }
     }
 }
