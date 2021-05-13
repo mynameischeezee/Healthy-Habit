@@ -1,28 +1,25 @@
 # Healthy-Habit
 
-Healthy-Habit is my free and open-source project.</br>
-Free to use, change, etc.</br>
-</br>
-## Why Healthy-Habit?</br>
-- Free</br>
-- Easy</br>
-- Open source</br>
-</br>
-</br>
-</br>
-</br>
-## Tecnologies and fremeworks used on this project: </br>
-- [Modern WPF UI Control](https://github.com/Kinnara/ModernWpf/) </br>
-- [EF Core](https://github.com/dotnet/efcore) </br>
-- [WPF Core](https://github.com/dotnet/wpf) </br>
+Healthy-Habit is my free and open-source project.  
+Free to use, change, etc.  
+  
+## Why Healthy-Habit?  
+- Free  
+- Easy  
+- Open source  
+  
+  
+  
+  
+## Tecnologies and fremeworks used on this project:  
+- [Modern WPF UI Control](https://github.com/Kinnara/ModernWpf/).    
+- [EF Core](https://github.com/dotnet/efcore).    
+- [WPF Core](https://github.com/dotnet/wpf).  
 - and more!
-</br>
-</br>
-</br>
-</br>
-
+  
+  
+  
 #### I will be so happy, to hear you opinion and comments about this project.
-</br>
-With love - "cheeze"
-</br>
+  
+With love - "cheeze"  
 2021.
