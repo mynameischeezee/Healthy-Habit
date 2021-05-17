@@ -8,55 +8,89 @@
         mc:Ignorable="d"
         MinWidth="800"
         MinHeight="600"
-        Title="Healthy Habbit"  Width="1280" Height="720"
-        ui:WindowHelper.UseModernWindowStyle="True">
+        Title="Healthy Habit"  Width="1280" Height="720"
+        ui:WindowHelper.UseModernWindowStyle="True" Activated="Window_Activated">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="7*"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <Button x:Name="OnLoadStart" Visibility="Hidden" Command="{Binding OnLoad}"></Button>
         <StackPanel x:Name="WelcomeInfoArea" Orientation="Vertical" Grid.Row="1" Grid.Column="1">
             <Label x:Name="WelcomeLabel" Content="{Binding Welcome}" FontSize="30" Style="{StaticResource HeaderLabel}"/>
             <Label x:Name="DateLabel" Content="{Binding Date}" FontSize="15" Style="{StaticResource SmallLabel}" Margin="0,-10,0,0"/>
         </StackPanel>
-        <StackPanel x:Name="HabitManipulationArea" Orientation="Vertical" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="Додати нову звичку" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Right" FontSize="12" Background="#3dc1d3" Margin="0,0,10,0"></Button>
-                <Button Content="Редагувати обрану звичку" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Right" FontSize="12" Margin="0,0,10,0"></Button>
-                <Button Content="Видалити обрану звичку" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Right" FontSize="12" Background="#e66767"  />
-            </StackPanel>
-            <Label Content="Виконано 3 з 5 звичок." FontSize="15" Style="{StaticResource SmallLabelBlack}"></Label>
-            <StackPanel Orientation="Horizontal"  Margin="5,-10,0,0">
-                <ProgressBar x:Name="HabitsDone" Value="60" Style="{DynamicResource DefaultProgressBarStyle}" Height="20" Width="500"></ProgressBar>
-                <Label Content="60% досягнуто." FontSize="15" Style="{StaticResource SmallLabelBlack}" Margin="15,-5,0,0"></Label>
-            </StackPanel>
-            <ItemsControl ItemsSource="{Binding HabitList}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Width="14" Height="14" Fill="{Binding Color}"></Rectangle>
-                            <Label Content="{Binding Name}" Style="{StaticResource HeaderLabel}" FontSize="14"></Label>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-        <StackPanel x:Name="AdditionalHabitArea" Orientation="Vertical" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3">
+        <Button Content="Додати нову звичку" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"  Style="{DynamicResource AccentButtonStyle}" Margin="0,0,250,50"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        </StackPanel>
+            <Label Content="60%" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource SmallLabel}"  FontSize="15"></Label>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                <Label Content="Виконано 3 з 5 звичок" Style="{StaticResource SmallLabel}" FontSize="15"></Label>
+                <StackPanel Orientation="Horizontal"></StackPanel>
+                <ProgressBar Style="{DynamicResource DefaultProgressBarStyle}" Height="20" Value="60"></ProgressBar>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4">
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <ui:CommandBar Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <ui:CommandBar.SecondaryCommands>
+                            <ui:AppBarButton Icon="Edit" Label="Редагувати"></ui:AppBarButton>
+                            <ui:AppBarButton Icon="Delete" Label="Видалити"></ui:AppBarButton>
+                        </ui:CommandBar.SecondaryCommands>
+                    </ui:CommandBar>
+                    <Image Source="https://images.vexels.com/media/users/3/148690/isolated/preview/3723c78adbbde90c24bdcb99020291cf-flowerpot-with-cactus-clipart-by-vexels.png" Height="65" Margin="25,0,0,0"></Image>
+                    <Label Content="Займатися йогою" VerticalAlignment="Center" Style="{DynamicResource HeaderLabel}" FontSize="20" Margin="0,0,75,0"></Label>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="01"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="02"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="03"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="04"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="05"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="06"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
+                        <Label Content="07"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"></Label>
+                        <RadioButton Width="20"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

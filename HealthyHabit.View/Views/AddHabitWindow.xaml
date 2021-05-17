@@ -1,0 +1,37 @@
+﻿<Window x:Class="HealthyHabit.View.Views.AddHabitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        MinWidth="800"
+        MinHeight="600"
+        Title="Healthy Habbit"  Width="1280" Height="720"
+        ui:WindowHelper.UseModernWindowStyle="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <Label Style="{DynamicResource HeaderLabel}" Content="Додати нову звичку" VerticalAlignment="Top" Margin="0,0,0,50"></Label>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Назва звички:" ui:ControlHelper.PlaceholderText="Назва"  Margin="0,0,0,5" />
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Опис звички:" ui:ControlHelper.PlaceholderText="Опис"  Margin="0,0,0,5" MaxLines="5" Height="200"/>
+            <ui:NumberBox Header="Частота:" PlaceholderText="0"  Value="NaN"  SpinButtonPlacementMode="Compact"  SmallChange="1" LargeChange="1" Margin="0,0,0,5" ></ui:NumberBox>
+            <ComboBox ui:ControlHelper.Header="Оберіть колір:" ui:ControlHelper.PlaceholderText="Колір" Width="300"></ComboBox>
+            <ComboBox ui:ControlHelper.Header="Оберіть рослинку:" ui:ControlHelper.PlaceholderText="Рослинка" Width="300"></ComboBox>
+            <Button Content="Створити звичку" HorizontalAlignment="Center" Margin="0,20,0,0" Style="{DynamicResource AccentButtonStyle}" IsDefault="True" />
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>

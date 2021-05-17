@@ -100,7 +100,6 @@ namespace HealthyHabit.ViewModel
         }
         public Action ChangeWindow { get; set; }
 
-
         public bool CanChange(object context)
         {
             return true;

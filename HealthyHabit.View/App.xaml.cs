@@ -45,6 +45,7 @@ namespace HealthyHabit.View
                    .AddSingleton<SettingsWindow>()
                    .AddSingleton<HabitWindow>()
                    .AddSingleton<ChartsWindow>()
+                   .AddSingleton<AddHabitWindow>()
                    .AddSingleton<LoginViewModel>()
                    .AddSingleton<MainMenuViewModel>()
                    .AddSingleton<SettingsViewModel>()

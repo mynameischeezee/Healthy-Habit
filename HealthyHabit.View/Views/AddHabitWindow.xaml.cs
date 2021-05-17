@@ -1,5 +1,4 @@
-﻿using HealthyHabit.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -14,20 +13,13 @@ using System.Windows.Shapes;
 namespace HealthyHabit.View.Views
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for AddHabitWindow.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class AddHabitWindow : Window
     {
-        public MainMenu(MainMenuViewModel datacontext)
+        public AddHabitWindow()
         {
             InitializeComponent();
-            this.DataContext = datacontext;
-
-        }
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            OnLoadStart.Command.Execute(null);
         }
     }
 }
