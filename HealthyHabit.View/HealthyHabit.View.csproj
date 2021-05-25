@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include=".misc\Screenshots\banner.png" />
     <Content Include=".misc\Screenshots\Screenshot_1.jpg" />
     <Content Include=".misc\Screenshots\Screenshot_2.jpg" />
     <Content Include=".misc\Screenshots\Screenshot_3.jpg" />
@@ -28,6 +29,7 @@
 
   <ItemGroup>
     <None Include=".misc\docker-compose.yml" />
+    <None Include=".misc\Screenshots\banner.psd" />
   </ItemGroup>
 
   <ItemGroup>
