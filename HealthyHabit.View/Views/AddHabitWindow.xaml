@@ -9,7 +9,7 @@
         MinWidth="800"
         MinHeight="600"
         Title="Healthy Habbit"  Width="1280" Height="720"
-        ui:WindowHelper.UseModernWindowStyle="True">
+        ui:WindowHelper.UseModernWindowStyle="True" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -26,10 +26,27 @@
             <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Назва звички:" ui:ControlHelper.PlaceholderText="Назва"  Margin="0,0,0,5" />
             <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Опис звички:" ui:ControlHelper.PlaceholderText="Опис"  Margin="0,0,0,5" MaxLines="5" Height="200"/>
             <ui:NumberBox Header="Частота:" PlaceholderText="0"  Value="NaN"  SpinButtonPlacementMode="Compact"  SmallChange="1" LargeChange="1" Margin="0,0,0,5" ></ui:NumberBox>
-            <ComboBox ui:ControlHelper.Header="Оберіть колір:" ui:ControlHelper.PlaceholderText="Колір" Width="300"></ComboBox>
-            <ComboBox ui:ControlHelper.Header="Оберіть рослинку:" ui:ControlHelper.PlaceholderText="Рослинка" Width="300"></ComboBox>
-            <Button Content="Створити звичку" HorizontalAlignment="Center" Margin="0,20,0,0" Style="{DynamicResource AccentButtonStyle}" IsDefault="True" />
-
+            <ComboBox x:Name="ColorCmbBox" ui:ControlHelper.Header="Оберіть колір:" ui:ControlHelper.PlaceholderText="Колір" Width="300">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle RadiusX="15" RadiusY="15" Fill="{Binding Color}" Width="15" Height="15" Margin="0,0,5,0"></Rectangle>
+                            <TextBlock Text="{Binding  Name}" FontFamily="Segoe UI" FontSize="12" ></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox x:Name="PlantsCmbBox" ui:ControlHelper.Header="Оберіть рослинку:" ui:ControlHelper.PlaceholderText="Рослинка" Width="300">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="20" Height="20" Source="{Binding Link}" Stretch="Fill" Margin="0,0,5,0" VerticalAlignment="Center"></Image>
+                            <TextBlock Text="{Binding  Name}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Створити звичку" HorizontalAlignment="Center" Margin="0,20,0,0" Style="{DynamicResource AccentButtonStyle}"  IsDefault="True" Command="{Binding CreateHabit}"/>
         </StackPanel>
 
     </Grid>

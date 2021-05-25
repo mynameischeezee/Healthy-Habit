@@ -15,7 +15,7 @@ using Microsoft.VisualStudio.PlatformUI;
 
 namespace HealthyHabit.ViewModel
 {
-    public class MainMenuViewModel : ViewModelBase
+    public class MainMenuViewModel : ViewModelBase, IWindowLocator
     {
         public SystemContextSQL SystemContext { get; private set; }
         public IAccountHolder<User> Account { get; private set; }
@@ -29,10 +29,48 @@ namespace HealthyHabit.ViewModel
         public int Progress
         {
             get { return _Progress; }
-            set { _Progress = value; OnPropertyChanged(nameof(Progress));
-}
+            set
+            {
+                _Progress = value; OnPropertyChanged(nameof(Progress));
+            }
         }
-        public string Date { get => $"{DateTime.Now.ToString("dddd", new CultureInfo("uk-UA"))}, {DateTime.Now.ToString("M", new CultureInfo("uk-UA"))} ";}
+
+        private string _CreateHabitDescription;
+        public string CreateHabitDescription
+        {
+            get { return _CreateHabitDescription; }
+            set { _CreateHabitDescription = value; OnPropertyChanged(nameof(CreateHabitDescription)); }
+        }
+        private string _CreateHabitName;
+        public string CreateHabitName
+        {
+            get { return _CreateHabitName; }
+            set { _CreateHabitName = value; OnPropertyChanged(nameof(CreateHabitName)); }
+        }
+        private int _CreateHabitFrequency;
+        public int CreateHabitFrequency
+        {
+            get { return _CreateHabitFrequency; }
+            set
+            {
+                _CreateHabitFrequency = value;
+                if (_CreateHabitFrequency < 0)
+                {
+                    _CreateHabitFrequency = 0;
+                }
+                OnPropertyChanged(nameof(CreateHabitFrequency));
+            }
+        }
+        private Color _CreateHabitSelectedColor;
+        public Color CreateHabitSelectedColor
+        {
+            get { return _CreateHabitSelectedColor; }
+            set { _CreateHabitSelectedColor = value; OnPropertyChanged(nameof(CreateHabitSelectedColor)); }
+        }
+        public ObservableCollection<Color> ColorsList { get; private set; }
+        public ObservableCollection<Plant> PLantsList { get; private set; }
+
+        public string Date { get => $"{DateTime.Now.ToString("dddd", new CultureInfo("uk-UA"))}, {DateTime.Now.ToString("M", new CultureInfo("uk-UA"))} "; }
         public ObservableCollection<Habit> HabitsList { get; private set; }
         public MainMenuViewModel(SystemContextSQL context, IAccountHolder<User> account)
         {
@@ -57,6 +95,14 @@ namespace HealthyHabit.ViewModel
             return "Вітаю";
 
         }
+        public ICommand AddHabitCommand
+        {
+            get { return new DelegateCommand<object>(_AddHabitCommand, SureUCan); }
+        }
+        private void _AddHabitCommand(object param)
+        {
+            OpenAddWindowCommand.Execute("");
+        }
         private bool SureUCan(object context)
         {
             return true;
@@ -68,7 +114,28 @@ namespace HealthyHabit.ViewModel
         private void _OnLoad(object param)
         {
             this.Welcome = $"{GetStringWelcomeByHours()}, {this.Account.GetUser().Name}!";
-            this.Progress = 100;
+            this.Progress = 20;
+            HabitsList = new ObservableCollection<Habit>(SystemContext.Habit);
+            ColorsList = new ObservableCollection<Color>(SystemContext.Colors);
+            PLantsList = new ObservableCollection<Plant>(SystemContext.Plants);
+            OnPropertyChanged(nameof(HabitsList));
+            OnPropertyChanged(nameof(ColorsList));
+            OnPropertyChanged(nameof(PLantsList));
         }
+        public ICommand OpenAddWindowCommand
+        {
+            get { return new DelegateCommand<object>(_OpenAddWindowCommand, CanChange); }
+        }
+        private void _OpenAddWindowCommand(object param)
+        {
+            ChangeWindow?.Invoke();
+        }
+
+        public bool CanChange(object context)
+        {
+            return true;
+        }
+        public Action ChangeWindow { get; set; }
+
     }
 }

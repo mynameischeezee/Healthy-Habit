@@ -7,14 +7,14 @@ using HealthyHabit.BL.Abstract;
 
 namespace HealthyHabit.BL.Implementation
 {
-    public class HabitService : IHabitService<SystemContextSQL, Habit>
+    public class HabitService : IHabitService<SystemContextSQL, Habit, Color, Plant>
     {
         public void AddProgress(SystemContextSQL datacontext, Habit habit)
         {
             throw new NotImplementedException();
         }
 
-        public void Create(SystemContextSQL datacontext, string name, string descriprion, int progress, bool iscompleted, DateTime datecreated, int plantid)
+        public void Create(SystemContextSQL datacontext, string desciption, int progress, bool iscompleted, Color color, DateTime datecreated, Plant plant)
         {
             throw new NotImplementedException();
         }

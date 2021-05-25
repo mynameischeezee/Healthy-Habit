@@ -23,7 +23,6 @@ namespace HealthyHabit.View.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
-        NotificationManager notificationManager = new NotificationManager();
         private MainMenu Menu;
         public LoginWindow(LoginViewModel datacontext, MainMenu menu)
         {

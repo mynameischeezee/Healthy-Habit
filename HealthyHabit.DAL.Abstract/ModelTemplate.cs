@@ -6,6 +6,6 @@ namespace HealthyHabit.DAL.Abstract
 {
     public class ModelTemplate
     {
-        public int id { get; set; }
+        public int ID { get; set; }
     }
 }

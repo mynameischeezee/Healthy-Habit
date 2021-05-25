@@ -6,7 +6,6 @@ using System.Text;
 
 namespace HealthyHabit.ViewModel.Abstractions
 {
-
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

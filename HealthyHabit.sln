@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.BL.Abstract", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.Models", "HealthyHabit.Models\HealthyHabit.Models.csproj", "{C5E12255-1E98-4AF2-9E21-BCE0CCEFBEED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthyHabit.Tests", "HealthyHabit.Tests\HealthyHabit.Tests.csproj", "{81E716A7-FE74-49B0-A6A1-56375B91D394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthyHabit.Tests", "HealthyHabit.Tests\HealthyHabit.Tests.csproj", "{81E716A7-FE74-49B0-A6A1-56375B91D394}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
