@@ -4,7 +4,13 @@ Healthy-Habit is my free and open-source project.
 Free to use, change, etc.  
 
 ## Screenshots
+![InterfaceScreenshot1](https://github.com/mynameischeezee/Healthy-Habit/blob/master/HealthyHabit.View/.misc/Screenshots/Screenshot_1.jpg?raw=true)
 
+![InterfaceScreenshot2](https://github.com/mynameischeezee/Healthy-Habit/blob/master/HealthyHabit.View/.misc/Screenshots/Screenshot_2.jpg?raw=true)
+
+![InterfaceScreenshot3](https://github.com/mynameischeezee/Healthy-Habit/blob/master/HealthyHabit.View/.misc/Screenshots/Screenshot_3.jpg?raw=true)
+
+![InterfaceScreenshot4](https://github.com/mynameischeezee/Healthy-Habit/blob/master/HealthyHabit.View/.misc/Screenshots/Screenshot_4.jpg?raw=true)
 
 
 ## Why Healthy-Habit?  
