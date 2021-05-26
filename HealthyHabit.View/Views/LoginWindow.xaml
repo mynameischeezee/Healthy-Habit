@@ -18,7 +18,7 @@
             <PasswordBox x:Name="pswd_login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15" />
             <Button Content="Увійти" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pswd_login, Mode=OneWay}" Style="{DynamicResource AccentButtonStyle}" IsDefault="True"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Досі не маєте аккаунту?"></Label>
+                <Label Content="Досі не маєте аккаунту?" Margin="0,5,10,0"></Label>
                 <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
             </StackPanel>
             <!--<Label Content="Помилка: Невірний логін або пароль." HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="13" Foreground="#e66767" FontFamily="Segoe UI Light"></Label>-->
@@ -31,7 +31,7 @@
             <PasswordBox x:Name="pswd_register" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,25" ></PasswordBox>
             <Button Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=pswd_register, Mode=OneWay}" IsDefault="True"></Button>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Вже маєте акаунт?"></Label>
+                <Label Content="Вже маєте акаунт?" Margin="0,5,10,0">></Label>
                 <Button x:Name="btn_switchtologin" Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
             </StackPanel>
             <!--<Label Content="Помилка: Введені дані не є коректними." HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="13" Foreground="#e66767" FontFamily="Segoe UI Light"></Label>-->

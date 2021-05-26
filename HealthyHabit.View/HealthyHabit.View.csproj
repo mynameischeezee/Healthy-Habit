@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_preview.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage0.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage1.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage2.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage3.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage4.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage5.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage6.png" />
+    <Content Include=".FlowersImages\Sunflower_test\sunflower_stage7.png" />
     <Content Include=".misc\Screenshots\banner.png" />
     <Content Include=".misc\Screenshots\Screenshot_1.jpg" />
     <Content Include=".misc\Screenshots\Screenshot_2.jpg" />
