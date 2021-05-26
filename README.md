@@ -30,6 +30,9 @@ Free to use, change, etc.
   
   
 #### I will be so happy, to hear you opinion and comments about this project.
-  
+
+Special thanks to:
+[@vardjaklap](https://github.com/vardjaklap) for supporting and Samanta for illustrations.
+
 With love - "cheeze"  
 2021.
