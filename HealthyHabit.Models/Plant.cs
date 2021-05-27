@@ -16,12 +16,13 @@ namespace HealthyHabit.Models
         public string Stage5Path { get; set; }
         public string Stage6Path { get; set; }
         public string Stage7Path { get; set; }
+        public string CurrentStage { get; set; }
         public string Name { get; set; }
         public Plant()
         {
 
         }
-        public Plant(string previewpath, string stage0path, string stage1path, string stage2path, string stage3path, string stage4path, string stage5path, string stage6path, string stage7path, string name)
+        public Plant(string previewpath, string stage0path, string stage1path, string stage2path, string stage3path, string stage4path, string stage5path, string stage6path, string stage7path, string currentStage, string name)
         {
             this.PreviewPath = previewpath;
             this.Stage0Path = stage0path;
@@ -32,6 +33,7 @@ namespace HealthyHabit.Models
             this.Stage5Path = stage5path;
             this.Stage6Path = stage6path;
             this.Stage7Path = stage7path;
+            this.CurrentStage = currentStage;
             this.Name = name;
         }
     }

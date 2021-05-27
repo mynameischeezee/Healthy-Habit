@@ -11,6 +11,7 @@ namespace HealthyHabit.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int  Progress { get; set; }
+        public int Frequency { get; set; }
         public bool IsCompleted { get; set; }
         [ForeignKey(nameof(ColorId))]
         public Color Color { get; set; }
@@ -23,11 +24,12 @@ namespace HealthyHabit.Models
         {
 
         }
-        public Habit(string name, string desciption, int progress, bool iscompleted, Color color, DateTime datecreated, Plant plant)
+        public Habit(string name, string desciption, int progress, int frequency, bool iscompleted, Color color, DateTime datecreated, Plant plant)
         {
             this.Name = name;
             this.Description = desciption;
             this.Progress = progress;
+            this.Frequency = frequency;
             this.IsCompleted = iscompleted;
             this.Color = color;
             this.DateCreated = datecreated;

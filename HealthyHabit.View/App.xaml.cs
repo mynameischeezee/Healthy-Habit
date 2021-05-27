@@ -15,6 +15,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using HealthyHabit.Models;
+using ControlzEx.Theming;
 
 namespace HealthyHabit.View
 {
@@ -28,6 +29,7 @@ namespace HealthyHabit.View
         private ServiceProvider ServiceProvider { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
+            //ThemeManager.Current.ChangeTheme(this, "Light.Purple");
             ServiceProvider = Configure().BuildServiceProvider();
             ServiceProvider.GetRequiredService<LoginWindow>().Show();
         }
@@ -54,18 +56,19 @@ namespace HealthyHabit.View
                    .AddSingleton<AddHabitViewModel>()
                    .AddSingleton<IAccountHolder<User>, AccountHolder>()
                    .AddTransient<IAuthenticationService<SystemContextSQL>, AuthenticationService>()
-                   .AddTransient<IHabitService<SystemContextSQL, Habit, Color, Plant>, HabitService>()
+                   .AddTransient<IHabitService<SystemContextSQL, User, Habit, Color, Plant>, HabitService>()
                    .AddTransient<IUserService<SystemContextSQL, User>, UserService>()
                    .AddTransient<IColorService<SystemContextSQL, Color>, ColorService>()
                    .AddTransient<IPlantService<SystemContextSQL, Plant>, PlantService>()
                    .AddTransient<IChartService, ChartService>()
+                   .AddTransient<IUserHabitService<SystemContextSQL, User, Habit>, UserHabitService>()
                    .AddTransient<IHashService, HashService>()
                    .AddTransient<ISaltService, SaltService>();
         }
         protected override void OnExit(ExitEventArgs e)
         {
-            ServiceProvider.GetRequiredService<SystemContextSQL>().Dispose();
             base.OnExit(e);
+            ServiceProvider.GetRequiredService<SystemContextSQL>().DisposeAsync();
         }
     }
 

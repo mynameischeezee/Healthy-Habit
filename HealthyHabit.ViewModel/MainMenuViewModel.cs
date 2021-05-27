@@ -19,6 +19,15 @@ namespace HealthyHabit.ViewModel
     {
         public SystemContextSQL SystemContext { get; private set; }
         public IAccountHolder<User> Account { get; private set; }
+        public IHabitService<SystemContextSQL, User, Habit, Color, Plant> HabitService { get; private set; }
+        public IUserHabitService<SystemContextSQL, User, Habit> UserHabitService { get; private set; }
+        public MainMenuViewModel(SystemContextSQL context, IAccountHolder<User> account, IHabitService<SystemContextSQL, User, Habit, Color, Plant> habitService, IUserHabitService<SystemContextSQL, User, Habit> userHabitService)
+        {
+            this.SystemContext = context;
+            this.Account = account;
+            this.HabitService = habitService;
+            this.UserHabitService = userHabitService;
+        }
         private string _Welcome;
         public string Welcome
         {
@@ -67,17 +76,36 @@ namespace HealthyHabit.ViewModel
             get { return _CreateHabitSelectedColor; }
             set { _CreateHabitSelectedColor = value; OnPropertyChanged(nameof(CreateHabitSelectedColor)); }
         }
+        private Plant _CreateHabitSelectedPlant;
+        public Plant CreateHabitSelectedPlant
+        {
+            get { return _CreateHabitSelectedPlant; }
+            set { _CreateHabitSelectedPlant = value; OnPropertyChanged(nameof(CreateHabitSelectedPlant)); }
+        }
         public ObservableCollection<Color> ColorsList { get; private set; }
         public ObservableCollection<Plant> PLantsList { get; private set; }
 
         public string Date { get => $"{DateTime.Now.ToString("dddd", new CultureInfo("uk-UA"))}, {DateTime.Now.ToString("M", new CultureInfo("uk-UA"))} "; }
         public ObservableCollection<Habit> HabitsList { get; private set; }
-        public MainMenuViewModel(SystemContextSQL context, IAccountHolder<User> account)
+        public ICommand CreateNewHabit
         {
-            this.SystemContext = context;
-            this.Account = account;
-
+            get { return new DelegateCommand<object>(_CreateNewHabit, CanCreate); }
         }
+        private void _CreateNewHabit(object param)
+        {
+            this.HabitService.Create(SystemContext, Account.GetUser(), CreateHabitName, CreateHabitDescription, 0, CreateHabitFrequency, false, CreateHabitSelectedColor, DateTime.Now, CreateHabitSelectedPlant);
+            this.SystemContext.SaveChanges();
+            UpdateList();
+        }
+        private bool CanCreate(object context)
+        {
+            if (CreateHabitName == null || CreateHabitSelectedColor == null || CreateHabitFrequency <= 0 || CreateHabitSelectedPlant == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        
         private string GetStringWelcomeByHours()
         {
             if (DateTime.Now.TimeOfDay.Hours > 12 && DateTime.Now.TimeOfDay.Hours < 18)
@@ -115,12 +143,16 @@ namespace HealthyHabit.ViewModel
         {
             this.Welcome = $"{GetStringWelcomeByHours()}, {this.Account.GetUser().Name}!";
             this.Progress = 20;
-            HabitsList = new ObservableCollection<Habit>(SystemContext.Habit);
+            UpdateList();
             ColorsList = new ObservableCollection<Color>(SystemContext.Colors);
             PLantsList = new ObservableCollection<Plant>(SystemContext.Plants);
-            OnPropertyChanged(nameof(HabitsList));
             OnPropertyChanged(nameof(ColorsList));
             OnPropertyChanged(nameof(PLantsList));
+        }
+        private void UpdateList()
+        {
+            HabitsList = new ObservableCollection<Habit>(UserHabitService.GetHabitsByUser(SystemContext, Account.GetUser()));
+            OnPropertyChanged(nameof(HabitsList));
         }
         public ICommand OpenAddWindowCommand
         {
