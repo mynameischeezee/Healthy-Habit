@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Microsoft.VisualStudio.PlatformUI;
+using HealthyHabit.BL.Implementation.Class;
 
 namespace HealthyHabit.ViewModel
 {
@@ -21,12 +22,14 @@ namespace HealthyHabit.ViewModel
         public IAccountHolder<User> Account { get; private set; }
         public IHabitService<SystemContextSQL, User, Habit, Color, Plant> HabitService { get; private set; }
         public IUserHabitService<SystemContextSQL, User, Habit> UserHabitService { get; private set; }
-        public MainMenuViewModel(SystemContextSQL context, IAccountHolder<User> account, IHabitService<SystemContextSQL, User, Habit, Color, Plant> habitService, IUserHabitService<SystemContextSQL, User, Habit> userHabitService)
+        public DateIsCompletedGenericService DateIsCompletedGenericService { get; private set; }
+        public MainMenuViewModel(SystemContextSQL context, IAccountHolder<User> account, IHabitService<SystemContextSQL, User, Habit, Color, Plant> habitService, IUserHabitService<SystemContextSQL, User, Habit> userHabitService, DateIsCompletedGenericService dateIsCompletedGenericService)
         {
             this.SystemContext = context;
             this.Account = account;
             this.HabitService = habitService;
             this.UserHabitService = userHabitService;
+            this.DateIsCompletedGenericService = dateIsCompletedGenericService;
         }
         private string _Welcome;
         public string Welcome
@@ -84,9 +87,9 @@ namespace HealthyHabit.ViewModel
         }
         public ObservableCollection<Color> ColorsList { get; private set; }
         public ObservableCollection<Plant> PLantsList { get; private set; }
+        public ObservableCollection<DateIsCompletedGeneric> HabitsList { get; private set; }
 
         public string Date { get => $"{DateTime.Now.ToString("dddd", new CultureInfo("uk-UA"))}, {DateTime.Now.ToString("M", new CultureInfo("uk-UA"))} "; }
-        public ObservableCollection<Habit> HabitsList { get; private set; }
         public ICommand CreateNewHabit
         {
             get { return new DelegateCommand<object>(_CreateNewHabit, CanCreate); }
@@ -143,15 +146,17 @@ namespace HealthyHabit.ViewModel
         {
             this.Welcome = $"{GetStringWelcomeByHours()}, {this.Account.GetUser().Name}!";
             this.Progress = 20;
+            this.DateIsCompletedGenericService.Account = this.Account;
             UpdateList();
             ColorsList = new ObservableCollection<Color>(SystemContext.Colors);
             PLantsList = new ObservableCollection<Plant>(SystemContext.Plants);
             OnPropertyChanged(nameof(ColorsList));
             OnPropertyChanged(nameof(PLantsList));
+            
         }
         private void UpdateList()
         {
-            HabitsList = new ObservableCollection<Habit>(UserHabitService.GetHabitsByUser(SystemContext, Account.GetUser()));
+            HabitsList = this.DateIsCompletedGenericService.InitiAlizeGenericUnit();
             OnPropertyChanged(nameof(HabitsList));
         }
         public ICommand OpenAddWindowCommand
@@ -169,5 +174,13 @@ namespace HealthyHabit.ViewModel
         }
         public Action ChangeWindow { get; set; }
 
+        public ICommand TestCommand
+        {
+            get { return new DelegateCommand<object>(_TestCommand, SureUCan); }
+        }
+        private void _TestCommand(object param)
+        {
+
+        }
     }
 }

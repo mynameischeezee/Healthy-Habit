@@ -15,7 +15,6 @@ namespace HealthyHabit.BL.Abstract
         void Create(Datacontext datacontext, TUser user, string name, string desciption, int progress, int frequency, bool iscompleted, TColor color, DateTime datecreated, TPlant plant);
         void Change(Datacontext datacontext, TUser user, string name, string desciption, int progress, int frequency, bool iscompleted, TColor color, DateTime datecreated, TPlant plant);
         void Remove(Datacontext datacontext, THabit habit);
-        void AddProgress(Datacontext datacontext, THabit habit);
         bool IsCompleted(Datacontext datacontext, THabit habit);
         void HabitCheker(Datacontext datacontext, THabit habit);
     }

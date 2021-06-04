@@ -10,10 +10,6 @@ namespace HealthyHabit.BL.Implementation
 {
     public class HabitService : IHabitService<SystemContextSQL, User, Habit, Color, Plant>
     {
-        public void AddProgress(SystemContextSQL datacontext, Habit habit)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Change(SystemContextSQL datacontext, User user, string name, string desciption, int progress, int  frequency, bool iscompleted, Color color, DateTime datecreated, Plant plant)
         {
@@ -30,7 +26,7 @@ namespace HealthyHabit.BL.Implementation
 
         public void HabitCheker(SystemContextSQL datacontext, Habit habit)
         {
-            throw new NotImplementedException();
+            datacontext.Habit.
         }
 
         public bool IsCompleted(SystemContextSQL datacontext, Habit habit)

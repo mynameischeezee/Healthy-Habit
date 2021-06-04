@@ -15,7 +15,6 @@ namespace HealthyHabit.BL.Implementation
         {
             List<Habit> habits = new List<Habit>();
             var habitsID = datacontext.UserHabit.Include(u => u.User).Include(h => h.Habit).Where(uh => uh.User == user);
-
             foreach (UserHabit habit in habitsID)
             {
                 habits.Add(habit.Habit);

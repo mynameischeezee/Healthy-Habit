@@ -16,6 +16,10 @@ namespace HealthyHabit.Models
         {
                 
         }
+        public HabitCompleteDate(Habit habit)
+        {
+            this.Habit = habit;
+        }
         public HabitCompleteDate(Habit habit, DateTime completeDate)
         {
             this.Habit = habit;

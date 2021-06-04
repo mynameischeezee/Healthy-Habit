@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using HealthyHabit.Models;
 using ControlzEx.Theming;
+using HealthyHabit.BL.Implementation.Class;
 
 namespace HealthyHabit.View
 {
@@ -55,6 +56,10 @@ namespace HealthyHabit.View
                    .AddSingleton<ChartViewModel>()
                    .AddSingleton<AddHabitViewModel>()
                    .AddSingleton<IAccountHolder<User>, AccountHolder>()
+                   .AddSingleton<IHabitCompleteDateService<SystemContextSQL, Habit, HabitCompleteDate>, HabitCompleteDateService>()
+                   .AddSingleton<DateIsCompletedGeneric>()
+                   .AddSingleton<DateIsCompletedGenericService>()
+                   .AddSingleton<MarkHabitUnit>()
                    .AddTransient<IAuthenticationService<SystemContextSQL>, AuthenticationService>()
                    .AddTransient<IHabitService<SystemContextSQL, User, Habit, Color, Plant>, HabitService>()
                    .AddTransient<IUserService<SystemContextSQL, User>, UserService>()

@@ -44,8 +44,8 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden">
-                <Label Content="Виконано 3 з 5 звичок" Style="{StaticResource SmallLabel}" FontSize="15"/>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Visible">
+                <Label Content="Виконано 3 з 5 звичок, 60%" Style="{StaticResource SmallLabel}" FontSize="15"/>
                 <StackPanel Orientation="Horizontal"/>
                 <ProgressBar Style="{DynamicResource DefaultProgressBarStyle}" Height="20" Value="60"/>
             </StackPanel>
@@ -60,42 +60,31 @@
                                         <ui:AppBarButton Icon="Delete" Label="Видалити"/>
                                     </ui:CommandBar.SecondaryCommands>
                                 </ui:CommandBar>
-                                <Image Source="{Binding Plant.CurrentStage}" Height="45" VerticalAlignment="Center" Margin="25,0,0,0"/>
-                                <Label Content="{Binding Name}" VerticalAlignment="Center" Style="{DynamicResource HeaderLabel}" FontSize="20" Margin="0,0,75,0"/>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="01"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="02"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="03"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="04"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="05"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="06"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Width="30" Margin="25,0,0,0" VerticalAlignment="Center">
-                                    <Label Content="07"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                    <RadioButton Width="20"  mah:RadioButtonHelper.CheckGlyphFill="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16"/>
+                                <Image Source="{Binding Habit.Plant.CurrentStage}" Height="45" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                <Label Content="{Binding Habit.Name}" VerticalAlignment="Center" Style="{DynamicResource HeaderLabel}" FontSize="20" Margin="0,0,75,0"/>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <ItemsControl HorizontalContentAlignment="Stretch" ItemsSource="{Binding CurrentPartUnits}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="25,0,0,0" VerticalAlignment="Center">
+                                                </StackPanel>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Width="30" Margin="25,0,0,0"  Height="50" Orientation="Vertical" >
+                                                    <Label Content="{Binding DateStringFormat}"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
+                                                    <RadioButton IsChecked="{Binding IsMarked}" mah:RadioButtonHelper.CheckGlyphFill="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16" Command="{Binding TestCommand}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
-
             <StackPanel x:Name="AddHabitPanel" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="5" HorizontalAlignment="Center" Visibility="Hidden">
                 <Label Style="{DynamicResource HeaderLabel}" Content="Додати нову звичку" VerticalAlignment="Top" Margin="0,0,0,5"/>
                 <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Назва звички:" ui:ControlHelper.PlaceholderText="Назва"  Margin="0,0,0,5" Text="{Binding CreateHabitName}"/>
