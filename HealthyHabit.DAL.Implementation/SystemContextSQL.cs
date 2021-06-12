@@ -15,7 +15,6 @@ namespace HealthyHabit.DAL.Implementation
         public DbSet<UserHabit> UserHabit { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Plant> Plants { get; set; }
-        private List<UserHabit> habits;
         public SystemContextSQL(DbContextOptions<SystemContextSQL> options) : base(options)
         {
             Database.EnsureCreated();

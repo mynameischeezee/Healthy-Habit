@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HealthyHabit.DAL.Abstract
+namespace HealthyHabit.Models
 {
     public class ModelTemplate
     {

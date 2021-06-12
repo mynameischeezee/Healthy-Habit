@@ -26,7 +26,34 @@ namespace HealthyHabit.BL.Implementation
 
         public void HabitCheker(SystemContextSQL datacontext, Habit habit)
         {
-            datacontext.Habit.
+            if (habit.Progress == 0)
+            {
+                habit.Plant.CurrentStage = habit.Plant.Stage0Path;
+            }
+            switch (habit.Progress / 3)
+            {
+                case (1):
+                    habit.Plant.CurrentStage = habit.Plant.Stage1Path;
+                    break;
+                case (2):
+                    habit.Plant.CurrentStage = habit.Plant.Stage2Path;
+                    break;
+                case (3):
+                    habit.Plant.CurrentStage = habit.Plant.Stage3Path;
+                    break;
+                case (4):
+                    habit.Plant.CurrentStage = habit.Plant.Stage4Path;
+                    break;
+                case (5):
+                    habit.Plant.CurrentStage = habit.Plant.Stage5Path;
+                    break;
+                case (6):
+                    habit.Plant.CurrentStage = habit.Plant.Stage6Path;
+                    break;
+                case (7):
+                    habit.Plant.CurrentStage = habit.Plant.Stage7Path;
+                    break;
+            }
         }
 
         public bool IsCompleted(SystemContextSQL datacontext, Habit habit)

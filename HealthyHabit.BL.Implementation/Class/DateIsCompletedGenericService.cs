@@ -65,16 +65,16 @@ namespace HealthyHabit.BL.Implementation.Class
                 {
                     if (habits[i] == null)
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext,new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")),false,HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext,new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")),false,HabitCompleteDateService, HabitService));
                     }
                     else
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService, HabitService));
                     }
                 }
                 catch
                 {
-                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService));
+                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                 }
             }
             return markHabitUnitsFirst;
@@ -88,16 +88,16 @@ namespace HealthyHabit.BL.Implementation.Class
                 {
                     if (habits[i] == null)
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                     }
                     else
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService, HabitService));
                     }
                 }
                 catch
                 {
-                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService));
+                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                 }
             }
             return markHabitUnitsFirst;
@@ -111,16 +111,16 @@ namespace HealthyHabit.BL.Implementation.Class
                 {
                     if (habits[i] == null)
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                     }
                     else
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, habits[i], habits[i].CompleteDate.ToString("dd", new CultureInfo("uk-UA")), true, HabitCompleteDateService, HabitService));
                     }
                 }
                 catch
                 {
-                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService));
+                    markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                 }
             }
             return markHabitUnitsFirst;

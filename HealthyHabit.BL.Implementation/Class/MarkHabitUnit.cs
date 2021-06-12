@@ -18,15 +18,17 @@ namespace HealthyHabit.BL.Implementation.Class
         public string DateStringFormat { get; set; }
         public HabitCompleteDate habitCompleteDate { get; set; }
         public IHabitCompleteDateService<SystemContextSQL,Habit,HabitCompleteDate> HabitCompleteDateService { get; set; }
+        public IHabitService<SystemContextSQL, User, Habit, Color, Plant> HabitService { get; set; }
         public SystemContextSQL systemContextSQL { get; set; }
         public bool IsMarked { get; set; }
-        public MarkHabitUnit(SystemContextSQL systemContextSQL,HabitCompleteDate habitComplete, string FormatedDate, bool isMarked, IHabitCompleteDateService<SystemContextSQL, Habit, HabitCompleteDate> habitCompleteDateService)
+        public MarkHabitUnit(SystemContextSQL systemContextSQL,HabitCompleteDate habitComplete, string FormatedDate, bool isMarked, IHabitCompleteDateService<SystemContextSQL, Habit, HabitCompleteDate> habitCompleteDateService, IHabitService<SystemContextSQL, User, Habit, Color, Plant> habitService)
         {
             this.DateStringFormat = FormatedDate;
             this.habitCompleteDate = habitComplete;
             this.IsMarked = isMarked;
             this.HabitCompleteDateService = habitCompleteDateService;
             this.systemContextSQL = systemContextSQL;
+            this.HabitService = habitService;
         }
         public ICommand TestCommand
         {
@@ -35,11 +37,7 @@ namespace HealthyHabit.BL.Implementation.Class
         private void _TestCommand(object param)
         {
             this.HabitCompleteDateService.AddProgress(systemContextSQL,this.habitCompleteDate.Habit, new DateTime(DateTime.Now.Year, DateTime.Now.Month, Convert.ToInt32(DateStringFormat)));
-            //else
-            //{
-            //    this.IsMarked = false;
-            //    this.HabitCompleteDateService.Remove(systemContextSQL, habitCompleteDate);
-            //}
+            HabitService.HabitCheker(systemContextSQL, habitCompleteDate.Habit);
         }
         private bool SureUCan(object param)
         {

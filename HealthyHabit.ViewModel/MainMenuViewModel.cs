@@ -85,15 +85,25 @@ namespace HealthyHabit.ViewModel
             get { return _CreateHabitSelectedPlant; }
             set { _CreateHabitSelectedPlant = value; OnPropertyChanged(nameof(CreateHabitSelectedPlant)); }
         }
+        private string _StringProgres;
+        public string StringProgres
+        {
+            get { return _StringProgres; }
+            set { _StringProgres = value; OnPropertyChanged(nameof(StringProgres)); }
+        }
+        private int _Progres;
+        public int Progres
+        {
+            get { return _Progres; }
+            set { _Progres = value; OnPropertyChanged(nameof(Progres)); }
+        }
         public ObservableCollection<Color> ColorsList { get; private set; }
         public ObservableCollection<Plant> PLantsList { get; private set; }
         public ObservableCollection<DateIsCompletedGeneric> HabitsList { get; private set; }
 
         public string Date { get => $"{DateTime.Now.ToString("dddd", new CultureInfo("uk-UA"))}, {DateTime.Now.ToString("M", new CultureInfo("uk-UA"))} "; }
-        public ICommand CreateNewHabit
-        {
-            get { return new DelegateCommand<object>(_CreateNewHabit, CanCreate); }
-        }
+        public ICommand CreateNewHabit => new DelegateCommand<object>(_CreateNewHabit, CanCreate);
+
         private void _CreateNewHabit(object param)
         {
             this.HabitService.Create(SystemContext, Account.GetUser(), CreateHabitName, CreateHabitDescription, 0, CreateHabitFrequency, false, CreateHabitSelectedColor, DateTime.Now, CreateHabitSelectedPlant);
@@ -152,7 +162,29 @@ namespace HealthyHabit.ViewModel
             PLantsList = new ObservableCollection<Plant>(SystemContext.Plants);
             OnPropertyChanged(nameof(ColorsList));
             OnPropertyChanged(nameof(PLantsList));
+            UpdateProgres();
             
+        }
+        private void UpdateProgres()
+        {
+            List<HabitCompleteDate> habits = SystemContext.HabitCompleteDate.Where(x => x.CompleteDate.DayOfYear == DateTime.Now.DayOfYear).ToList<HabitCompleteDate>();
+            var habs = new List<HabitCompleteDate>();
+            var all = this.HabitsList.Count();
+            foreach (DateIsCompletedGeneric generic in this.HabitsList)
+            {
+                habs.Add(habits.FirstOrDefault(h => h.ID == generic.Habit.ID));
+            }
+            var selected = habs.Count;
+            if (all != 0)
+            {
+                this.Progres = selected * (100 / all);
+            }
+            else
+            {
+                this.Progres = 0;
+            }
+            
+            this.StringProgres = $"Виконанно {selected} з {all} звичок. {this.Progres}%";
         }
         private void UpdateList()
         {

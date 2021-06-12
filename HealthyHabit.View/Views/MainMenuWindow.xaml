@@ -44,10 +44,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Visible">
-                <Label Content="Виконано 3 з 5 звичок, 60%" Style="{StaticResource SmallLabel}" FontSize="15"/>
+            <StackPanel x:Name="StatisticsArea" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Visible">
+                <Label Content="{Binding StringProgres}" Style="{StaticResource SmallLabel}" FontSize="15"/>
                 <StackPanel Orientation="Horizontal"/>
-                <ProgressBar Style="{DynamicResource DefaultProgressBarStyle}" Height="20" Value="60"/>
+                <ProgressBar Style="{DynamicResource DefaultProgressBarStyle}" Height="20" Value="{Binding Progres}"/>
             </StackPanel>
             <StackPanel x:Name="icTodoList" Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="4" Visibility="Visible">
                 <ItemsControl ItemsSource="{Binding HabitsList}">
@@ -74,7 +74,7 @@
                                             <DataTemplate>
                                                 <StackPanel Width="30" Margin="25,0,0,0"  Height="50" Orientation="Vertical" >
                                                     <Label Content="{Binding DateStringFormat}"  FontSize="15" Foreground="#8f99a7" FontWeight="Bold" FontFamily="Segoe UI Semibold"/>
-                                                    <RadioButton IsChecked="{Binding IsMarked}" mah:RadioButtonHelper.CheckGlyphFill="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16" Command="{Binding TestCommand}"/>
+                                                    <RadioButton IsChecked="{Binding IsMarked}" mah:RadioButtonHelper.CheckGlyphFill="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStroke="White" mah:RadioButtonHelper.CheckGlyphFillPointerOver="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphFillPressed="{Binding habitCompleteDate.Habit.Color.HexCode}" mah:RadioButtonHelper.CheckGlyphStrokePointerOver="White" mah:RadioButtonHelper.CheckGlyphStrokePressed="White" mah:RadioButtonHelper.RadioCheckSize="16" Command="{Binding TestCommand}" Click="Upd" />
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>

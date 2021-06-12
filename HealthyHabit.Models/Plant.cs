@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HealthyHabit.DAL.Abstract;
 
 namespace HealthyHabit.Models
 {

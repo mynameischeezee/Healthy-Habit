@@ -45,13 +45,19 @@ namespace HealthyHabit.View.Views
             {
                 icTodoList.Visibility = Visibility.Hidden;
                 AddHabitPanel.Visibility = Visibility.Visible;
+                StatisticsArea.Visibility = Visibility.Hidden;
             }
             else
             {
                 icTodoList.Visibility = Visibility.Visible;
                 AddHabitPanel.Visibility = Visibility.Hidden;
+                StatisticsArea.Visibility = Visibility.Visible;
             }
             
+        }
+
+        private void Upd(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

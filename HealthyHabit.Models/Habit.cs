@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using HealthyHabit.DAL.Abstract;
 
 namespace HealthyHabit.Models
 {
