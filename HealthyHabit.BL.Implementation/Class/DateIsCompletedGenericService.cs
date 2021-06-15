@@ -1,11 +1,9 @@
 ﻿using HealthyHabit.BL.Abstract;
 using HealthyHabit.DAL.Implementation;
 using HealthyHabit.Models;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Text;
 
 namespace HealthyHabit.BL.Implementation.Class
 {
@@ -30,7 +28,7 @@ namespace HealthyHabit.BL.Implementation.Class
             List<Habit> habits = UserHabitService.GetHabitsByUser(systemContext, Account.GetUser());
             foreach (Habit loophabit in habits)
             {
-                DateIsCompletedGeneric dateIsCompletedGeneric = new DateIsCompletedGeneric(loophabit);
+                DateIsCompletedGeneric dateIsCompletedGeneric = new DateIsCompletedGeneric(loophabit, systemContext, this.HabitService, this.UserHabitService);
                 List<HabitCompleteDate> HabitCompleteDateList = HabitCompleteDateService.GetAllForHabit(systemContext, loophabit);
                 if (HabitCompleteDateList.Count < 7)
                 {
@@ -48,7 +46,7 @@ namespace HealthyHabit.BL.Implementation.Class
                 else if (HabitCompleteDateList.Count >= 7 && HabitCompleteDateList.Count < 15)
                 {
                     dateIsCompletedGeneric.FirstPartUnits = SetFirstPart(HabitCompleteDateList, loophabit);
-                    dateIsCompletedGeneric.SecondPartUnits = SetSecondPart(HabitCompleteDateList,loophabit);
+                    dateIsCompletedGeneric.SecondPartUnits = SetSecondPart(HabitCompleteDateList, loophabit);
                     dateIsCompletedGeneric.CurrentPartUnits = dateIsCompletedGeneric.SecondPartUnits;
                 }
 
@@ -65,7 +63,7 @@ namespace HealthyHabit.BL.Implementation.Class
                 {
                     if (habits[i] == null)
                     {
-                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext,new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")),false,HabitCompleteDateService, HabitService));
+                        markHabitUnitsFirst.Add(new MarkHabitUnit(systemContext, new HabitCompleteDate(habit), habit.DateCreated.AddDays(i * habit.Frequency).ToString("dd", new CultureInfo("uk-UA")), false, HabitCompleteDateService, HabitService));
                     }
                     else
                     {

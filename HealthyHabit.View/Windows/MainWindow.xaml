@@ -1,0 +1,47 @@
+﻿<Window x:Class="HealthyHabit.View.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        MinWidth="800"
+        MinHeight="600"
+        Title="Healthy Habit"  
+        Width="1280" 
+        Height="720"
+        ui:WindowHelper.UseModernWindowStyle="True" WindowStartupLocation="CenterOwner" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="UpdateViewbtn" Command="{Binding UpdateView}" CommandParameter="{Binding SelectedItem, ElementName=NavView}"></Button>
+        <ui:NavigationView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="2"
+            x:Name="NavView"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="False"
+            IsPaneOpen="False"
+            PaneDisplayMode="LeftCompact"
+            IsSettingsVisible="False"
+            Background="White"
+                 
+            SelectionChanged="NavView_SelectionChanged">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Icon="Home" Content="Звички" Tag="HabitsViewModel"/>
+                <ui:NavigationViewItem Icon="Accept" Content="Створити звичку" Tag="AddHabitViewModel"/>
+                <ui:NavigationViewItem Icon="Edit" Content="Редагувати звичку" Tag="ChangeHabitViewModel"/>
+                <ui:NavigationViewItem Icon="ContactInfo" Content="Редагувати дані користувача" Tag="ChangeAccountDataViewModel"/>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="1" Grid.Column="1"/>
+    </Grid>
+</Window>

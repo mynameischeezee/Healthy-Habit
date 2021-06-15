@@ -1,22 +1,19 @@
-﻿using HealthyHabit.DAL.Abstract;
-using HealthyHabit.DAL.Implementation;
-using HealthyHabit.BL.Abstract;
+﻿using HealthyHabit.BL.Abstract;
 using HealthyHabit.BL.Implementation;
+using HealthyHabit.BL.Implementation.Class;
+using HealthyHabit.DAL.Implementation;
 using HealthyHabit.Models;
+using Microsoft.VisualStudio.PlatformUI;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using HealthyHabit.ViewModel.Abstractions;
-using System.Globalization;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
-using Microsoft.VisualStudio.PlatformUI;
-using HealthyHabit.BL.Implementation.Class;
 
 namespace HealthyHabit.ViewModel
 {
-    public class MainMenuViewModel : ViewModelBase, IWindowLocator
+    public class MainMenuViewModel : ViewModelBase
     {
         public SystemContextSQL SystemContext { get; private set; }
         public IAccountHolder<User> Account { get; private set; }
@@ -118,7 +115,7 @@ namespace HealthyHabit.ViewModel
             }
             return true;
         }
-        
+
         private string GetStringWelcomeByHours()
         {
             if (DateTime.Now.TimeOfDay.Hours > 12 && DateTime.Now.TimeOfDay.Hours < 18)
@@ -135,14 +132,6 @@ namespace HealthyHabit.ViewModel
             }
             return "Вітаю";
 
-        }
-        public ICommand AddHabitCommand
-        {
-            get { return new DelegateCommand<object>(_AddHabitCommand, SureUCan); }
-        }
-        private void _AddHabitCommand(object param)
-        {
-            OpenAddWindowCommand.Execute("");
         }
         private bool SureUCan(object context)
         {
@@ -163,7 +152,7 @@ namespace HealthyHabit.ViewModel
             OnPropertyChanged(nameof(ColorsList));
             OnPropertyChanged(nameof(PLantsList));
             UpdateProgres();
-            
+
         }
         private void UpdateProgres()
         {
@@ -183,36 +172,13 @@ namespace HealthyHabit.ViewModel
             {
                 this.Progres = 0;
             }
-            
+
             this.StringProgres = $"Виконанно {selected} з {all} звичок. {this.Progres}%";
         }
         private void UpdateList()
         {
             HabitsList = this.DateIsCompletedGenericService.InitiAlizeGenericUnit();
             OnPropertyChanged(nameof(HabitsList));
-        }
-        public ICommand OpenAddWindowCommand
-        {
-            get { return new DelegateCommand<object>(_OpenAddWindowCommand, CanChange); }
-        }
-        private void _OpenAddWindowCommand(object param)
-        {
-            ChangeWindow?.Invoke();
-        }
-
-        public bool CanChange(object context)
-        {
-            return true;
-        }
-        public Action ChangeWindow { get; set; }
-
-        public ICommand TestCommand
-        {
-            get { return new DelegateCommand<object>(_TestCommand, SureUCan); }
-        }
-        private void _TestCommand(object param)
-        {
-
         }
     }
 }

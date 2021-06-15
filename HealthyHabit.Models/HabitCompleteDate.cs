@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace HealthyHabit.Models
 {
@@ -13,7 +11,7 @@ namespace HealthyHabit.Models
         public DateTime CompleteDate { get; set; }
         public HabitCompleteDate()
         {
-                
+
         }
         public HabitCompleteDate(Habit habit)
         {

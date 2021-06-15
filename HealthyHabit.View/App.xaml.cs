@@ -1,22 +1,16 @@
-﻿using HealthyHabit.DAL.Implementation;
-using HealthyHabit.View.Views;
-using HealthyHabit.ViewModel;
+﻿using HealthyHabit.BL.Abstract;
 using HealthyHabit.BL.Implementation;
-using HealthyHabit.BL.Abstract;
+using HealthyHabit.BL.Implementation.Class;
+using HealthyHabit.DAL.Implementation;
+using HealthyHabit.Models;
+using HealthyHabit.View.Views;
+using HealthyHabit.View.Windows;
+using HealthyHabit.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using HealthyHabit.Models;
-using ControlzEx.Theming;
-using HealthyHabit.BL.Implementation.Class;
 
 namespace HealthyHabit.View
 {
@@ -30,9 +24,16 @@ namespace HealthyHabit.View
         private ServiceProvider ServiceProvider { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            //ThemeManager.Current.ChangeTheme(this, "Light.Purple");
             ServiceProvider = Configure().BuildServiceProvider();
-            ServiceProvider.GetRequiredService<LoginWindow>().Show();
+            ServiceProvider.GetRequiredService<MainWindow>().DataContext = ServiceProvider.GetRequiredService<MainViewModel>();
+            ServiceProvider.GetRequiredService<LoginView>().DataContext = ServiceProvider.GetRequiredService<LoginViewModel>();
+            ServiceProvider.GetRequiredService<RegisterView>().DataContext = ServiceProvider.GetRequiredService<RegisterViewModel>();
+            ServiceProvider.GetRequiredService<ChangeHabitView>().DataContext = ServiceProvider.GetRequiredService<ChangeHabitViewModel>();
+            ServiceProvider.GetRequiredService<ChangeAccountDataView>().DataContext = ServiceProvider.GetRequiredService<ChangeAccountDataViewModel>();
+            ServiceProvider.GetRequiredService<AddHabitView>().DataContext = ServiceProvider.GetRequiredService<AddHabitViewModel>();
+            ServiceProvider.GetRequiredService<HabitsView>().DataContext = ServiceProvider.GetRequiredService<HabitsViewModel>();
+            ServiceProvider.GetRequiredService<MainViewModel>().SelectedViewModel = ServiceProvider.GetRequiredService<LoginViewModel>();
+            ServiceProvider.GetRequiredService<MainWindow>().Show();
         }
         private IServiceCollection Configure()
         {
@@ -43,18 +44,20 @@ namespace HealthyHabit.View
             ServiceCollection services = new ServiceCollection();
             return services.AddDbContext<SystemContextSQL>
                    (optionsBuilder => optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DockerMsSqlDB")))
-                   .AddSingleton<LoginWindow>()
-                   .AddSingleton<MainMenu>()
-                   .AddSingleton<SettingsWindow>()
-                   .AddSingleton<HabitWindow>()
-                   .AddSingleton<ChartsWindow>()
-                   .AddSingleton<AddHabitWindow>()
+                   .AddSingleton<MainWindow>()
+                   .AddSingleton<LoginView>()
+                   .AddSingleton<RegisterView>()
+                   .AddSingleton<HabitsView>()
+                   .AddSingleton<AddHabitView>()
+                   .AddSingleton<ChangeHabitView>()
+                   .AddSingleton<ChangeAccountDataView>()
+                   .AddSingleton<MainViewModel>()
                    .AddSingleton<LoginViewModel>()
-                   .AddSingleton<MainMenuViewModel>()
-                   .AddSingleton<SettingsViewModel>()
-                   .AddSingleton<HabitViewModel>()
-                   .AddSingleton<ChartViewModel>()
+                   .AddSingleton<RegisterViewModel>()
+                   .AddSingleton<HabitsViewModel>()
                    .AddSingleton<AddHabitViewModel>()
+                   .AddSingleton<ChangeHabitViewModel>()
+                   .AddSingleton<ChangeAccountDataViewModel>()
                    .AddSingleton<IAccountHolder<User>, AccountHolder>()
                    .AddSingleton<IHabitCompleteDateService<SystemContextSQL, Habit, HabitCompleteDate>, HabitCompleteDateService>()
                    .AddSingleton<DateIsCompletedGeneric>()
@@ -68,12 +71,12 @@ namespace HealthyHabit.View
                    .AddTransient<IChartService, ChartService>()
                    .AddTransient<IUserHabitService<SystemContextSQL, User, Habit>, UserHabitService>()
                    .AddTransient<IHashService, HashService>()
-                   .AddTransient<ISaltService, SaltService>();
+                   .AddTransient<ISaltService, SaltService>()
+                   .AddTransient<SwitchToRegisterCommand>();
         }
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            ServiceProvider.GetRequiredService<SystemContextSQL>().DisposeAsync();
         }
     }
 

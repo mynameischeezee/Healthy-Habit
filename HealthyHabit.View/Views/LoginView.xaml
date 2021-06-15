@@ -1,0 +1,40 @@
+﻿<UserControl
+        x:Class="HealthyHabit.View.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View"
+        xmlns:ViewModels ="clr-namespace:HealthyHabit.ViewModel;assembly=HealthyHabit.ViewModel"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        d:Background="White"
+        d:DesignHeight="680" d:DesignWidth="1150">
+    <Grid>
+        <Label Style="{StaticResource HeaderLabel}" Content="Healthy habit" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100"></Label>
+        <StackPanel x:Name="LoginStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <Label Content="Увійти до системи" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Лоігн" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,15" Text="{Binding Username}"/>
+            <PasswordBox x:Name="pswd_login" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,15" />
+            <Button Content="Увійти" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=pswd_login, Mode=OneWay}" Style="{DynamicResource AccentButtonStyle}" IsDefault="True"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Досі не маєте аккаунту?" Margin="0,5,10,0"></Label>
+                <Button x:Name="btn_switchtoregister" Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch" ></Button>
+            </StackPanel>
+            <!--<Label Content="Помилка: Невірний логін або пароль." HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="13" Foreground="#e66767" FontFamily="Segoe UI Light"></Label>-->
+        </StackPanel>
+        <StackPanel x:Name="RegisterStackPanel"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="Hidden">
+            <Label Content="Регестрація" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Як до вас звертатися ?" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,5" Text="{Binding Name}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Ім'я для входу" ui:ControlHelper.Header="Логін" Margin="0,0,0,5" Text="{Binding Username}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Пошта" ui:ControlHelper.Header="Адреса електронної пошти" Margin="0,0,0,5" Text="{Binding Mail}"/>
+            <PasswordBox x:Name="pswd_register" Style="{DynamicResource DefaultPasswordBoxStyle}" ui:ControlHelper.Header="Пароль облікового запису" ui:ControlHelper.PlaceholderText="Пароль" Margin="0,0,0,25" ></PasswordBox>
+            <Button Content="Регестрація" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=pswd_register, Mode=OneWay}" IsDefault="True"></Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Вже маєте акаунт?" Margin="0,5,10,0"></Label>
+                <Button x:Name="btn_switchtologin" Content="Увійти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Click="Switch"  ></Button>
+            </StackPanel>
+            <!--<Label Content="Помилка: Введені дані не є коректними." HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="13" Foreground="#e66767" FontFamily="Segoe UI Light"></Label>-->
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="HealthyHabit.View.Views.ChangeAccountDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        d:Background="White"
+        d:DesignHeight="680" d:DesignWidth="1150">
+    <Grid>
+        <StackPanel x:Name="UpdateUserInfo"  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Style="{DynamicResource HeaderLabel}" Content="Змінити дані користувача" VerticalAlignment="Top" Margin="0,0,0,10"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Як до вас звертатися ?" ui:ControlHelper.Header="Ім'я користувача" Margin="0,0,0,5" Text="{Binding Name}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.PlaceholderText="Пошта" ui:ControlHelper.Header="Адреса електронної пошти" Margin="0,0,0,5" Text="{Binding Mail}"/>
+            <Button Content="Зберегти" Style="{DynamicResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0,0,0,25" Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=pswd_register, Mode=OneWay}" IsDefault="True"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

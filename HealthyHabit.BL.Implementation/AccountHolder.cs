@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using HealthyHabit.BL.Abstract;
 using HealthyHabit.Models;
-using HealthyHabit.DAL.Implementation;
-using HealthyHabit.BL.Abstract;
 
 namespace HealthyHabit.BL.Implementation
 {
@@ -15,7 +11,7 @@ namespace HealthyHabit.BL.Implementation
         }
         public void SetUser(User user)
         {
-            this.Account = user; 
+            this.Account = user;
         }
 
         public User GetUser()

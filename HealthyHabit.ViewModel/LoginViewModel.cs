@@ -1,21 +1,12 @@
-﻿using HealthyHabit.DAL.Abstract;
+﻿using HealthyHabit.BL.Abstract;
 using HealthyHabit.DAL.Implementation;
-using HealthyHabit.BL.Abstract;
-using HealthyHabit.BL.Implementation;
-using HealthyHabit.Models;
-using HealthyHabit.ViewModel.Abstractions;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Notifications.Wpf.Core;
-using System.Windows.Input;
-using System.Windows.Controls;
 using Microsoft.VisualStudio.PlatformUI;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace HealthyHabit.ViewModel
 {
-    public class LoginViewModel : ViewModelBase, IWindowLocator
+    public class LoginViewModel : ViewModelBase
     {
         public SystemContextSQL SystemContext { get; private set; }
         public IAuthenticationService<SystemContextSQL> authenticationService { get; private set; }
@@ -60,7 +51,6 @@ namespace HealthyHabit.ViewModel
                 return;
             this.Password = passwordBox.Password;
             authenticationService.Login(SystemContext, Username, Password);
-            OpenMainMenuCommand.Execute("");
         }
         public ICommand RegisterCommand
         {
@@ -88,20 +78,6 @@ namespace HealthyHabit.ViewModel
             {
                 return false;
             }
-            return true;
-        }
-        public ICommand OpenMainMenuCommand
-        {
-            get { return new DelegateCommand<object>(_OpenMainMenuCommand, CanChange); }
-        }
-        private void _OpenMainMenuCommand(object param)
-        {
-            ChangeWindow?.Invoke();
-        }
-        public Action ChangeWindow { get; set; }
-
-        public bool CanChange(object context)
-        {
             return true;
         }
     }

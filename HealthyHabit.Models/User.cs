@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HealthyHabit.Models
+﻿namespace HealthyHabit.Models
 {
     public class User : ModelTemplate
     {

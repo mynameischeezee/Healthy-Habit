@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="HealthyHabit.View.Views.AddHabitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthyHabit.View"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        mc:Ignorable="d"
+        d:Background="White"
+        d:DesignHeight="680" d:DesignWidth="1150">
+    <Grid>
+        <StackPanel x:Name="AddHabitPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Style="{DynamicResource HeaderLabel}" Content="Додати нову звичку" VerticalAlignment="Top" Margin="0,0,0,5"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Назва звички:" ui:ControlHelper.PlaceholderText="Назва"  Margin="0,0,0,5" Text="{Binding CreateHabitName}"/>
+            <TextBox Style="{DynamicResource DefaultTextBoxStyle}" ui:ControlHelper.Header="Опис звички:" ui:ControlHelper.PlaceholderText="Опис"  Margin="0,0,0,5" MaxLines="5" Height="70" Text="{Binding CreateHabitDescription}"/>
+            <ui:NumberBox Header="Частота:" PlaceholderText="0"  Value="{Binding CreateHabitFrequency}"  SpinButtonPlacementMode="Compact"  SmallChange="1" LargeChange="1" Margin="0,0,0,5"/>
+            <ComboBox Style="{DynamicResource DefaultComboBoxStyle}" x:Name="ColorCmbBox" ui:ControlHelper.Header="Оберіть колір:" ui:ControlHelper.PlaceholderText="Колір" Width="300" ItemsSource="{Binding ColorsList}" SelectedItem="{Binding CreateHabitSelectedColor}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle RadiusX="15" RadiusY="15" Fill="{Binding HexCode}" Width="15" Height="15" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding ColorName}" FontFamily="Segoe UI" FontSize="12" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox Style="{DynamicResource DefaultComboBoxStyle}" x:Name="PlantsCmbBox" ui:ControlHelper.Header="Оберіть рослинку:" ui:ControlHelper.PlaceholderText="Рослинка" Width="300" ItemsSource="{Binding PLantsList}" SelectedItem="{Binding CreateHabitSelectedPlant}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="20" Height="20" Source="{Binding PreviewPath}" Stretch="Fill" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Створити звичку" HorizontalAlignment="Center" Margin="0,20,0,0" Style="{DynamicResource AccentButtonStyle}"  IsDefault="True" Command="{Binding CreateNewHabit}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
